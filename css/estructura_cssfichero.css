@@ -77,3 +77,56 @@ footer {
 	/* evitar que el footer suba y descoloque la composicion de cajas */
 	clear: both;
 }
+
+/* Hacer que las filas impares de la tabla tenga otro fondo */
+tr:nth-child(2n+1){
+	background: moccasin;
+}
+
+#oro{
+	background: gold;
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+	body{
+		background: lightgreen;
+	}
+	section{
+		width: 50%;
+		float: left;
+	}
+	aside{
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+	body{
+		background: lightblue;
+	}
+	section{
+		width: 50%;
+		float: left;
+	}
+	aside{
+		width: 100%;
+	}
+	section > article:nth-child(2),article:nth-child(2){
+		width: 90%;
+	}
+	section > article:nth-child(4){
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	body{
+		background: lightpink;
+	}
+	section,aside {
+		width: 100%;
+	}
+	section > article {
+		width: 100%;
+	}
+}
