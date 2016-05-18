@@ -10,7 +10,8 @@
 		label,input {display: block;}
 		input{margin-bottom: 10px;}
 		input[type="submit"],input[type="reset"]{display: inline;}
-		input[type="radio"] + label{display: inline;}
+		input[type="radio"] {display: inline;}
+		input[type="radio"] + label {display: inline;white-space: pre-line;}
 		input:invalid { border: 2px solid orange; }
 	</style>
 </head>
@@ -79,6 +80,5 @@ que sea correcto
 				<input type="reset" name="reset" value="reset">
 			</form>
 		</section>
-	</form>
 </body>
 </html>
