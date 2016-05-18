@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio de ejemplo de formulario</title>
+	<link rel="stylesheet" href="">
+	<style>
+		section {width: 700px;margin: 0 auto;}
+		label,input {display: block;}
+		input[type="submit"],input[type="reset"]{display: inline;}
+	</style>
+</head>
+<body>
+	<!-- 
+Crear una página HTML con un formulario que pida los
+siguientes datos OBLIGATORIOS:
+➔ Nombre: debe empezar por una letra
+➔ Password: mínimo 8 caracteres
+➔ Edad:entre 0 y 110
+➔ Fecha de nacimiento, email, sexo
+• Y los siguientes OPCIONALES
+➔ Teléfono fijo: empieza por 8 o 9
+➔ Teléfono móvil: empieza por 6 o 7
+➔ comentario
+• Para los datos incorrectos que su borde sea rojo hasta
+que sea correcto
+	 -->
+	<form action="">
+		<section>
+			<form action="ejercicio_form.html" method="post">
+				<fieldset>
+					<legend>Datos conexión</legend>
+					<label for="nombre">Nombre:</label>
+					<input type="text" name="nombre" 
+						placeholder="Introduce un nombre" 
+						pattern="^[A-Z]{1}([A-Za-z ñáéíóú]{2,60})$" 
+						title="Primera letra en mayúsculas">
+					<label for="pass">Contraseña:</label>
+					<input type="password" name="pass" pattern="^.{8}$" title="8 caracteres">
+				</fieldset>
+				<fieldset>
+					<legend>Datos personales</legend>
+					<label for="edad">Edad:</label>/^[\d][0-110]$/
+					<input type="number" name="edad" placeholder="edad" pattern="^[0-110]\d$" title="entre 0 y 110">
+					<label for="pass">Fecha de nacimiento:</label>
+					<input type="password" name="pass" placeholder="Introduce la contraseña">
+					<label for="">dsfs</label>
+					<select name="" id=""></select>
+					<select name="" id=""></select>
+				</fieldset>
+				<input type="submit" name="submit" value="submit">
+				<input type="reset" name="reset" value="reset">
+			</form>
+		</section>
+	</form>
+</body>
+</html>
