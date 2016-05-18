@@ -5,7 +5,36 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width initial-scale=1.0">
 	<title></title>
-	<link rel="stylesheet" href="ejercicio1.css">
+	
+	<style>
+	
+		* {
+			/*
+				padding y border se aplicara dentro de las medidas width y height.
+				asi dos elementos con el mismo ancho y alto 
+				pero diferentes separaciones serán del mismo tamaño
+			*/
+			margin: 0%;
+			padding: 0%;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		h1,section,article,p{border: 1px solid DarkOrange;}
+		h2{width: 100%;background: moccasin;}
+		a{width: 100%;}
+		section,aside{width: 33%;float: left;}
+		h1,section{text-align: center;}
+		
+		body section:nth-child(2) article:nth-child(2n) {background: lightblue;}
+		body section:nth-child(3) article:nth-child(2n) {background: lightgreen;}
+		
+		article p:nth-child(1){color: red;text-align:left;}
+		article p:nth-child(2){color: yellow;text-align:center;}
+		article p:nth-child(3){color: black;text-align:right;}
+		a{color: red;}
+		aside p:last-child a{color: brown;}
+	</style>
 </head>
 <body>
 	<header><h1>CABECERA</h1></header>
@@ -45,11 +74,11 @@
 			<p>parrafo3</p>
 		</article>
 	</section>
-	<footer>
+	<aside>
 		<p><a href="">enlace1</a></p>
 		<p><a href="">enlace2</a></p>
 		<p><a href="">enlace3</a></p>
 		<p><a href="">enlace4</a></p>
-	</footer>
+	</aside>
 </body>
 </html>
