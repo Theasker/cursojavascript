@@ -39,15 +39,17 @@ frase con:
 		//=============================================
 		// Cuando hacemos click en el párrafo cambiamos la frase
 		// Comprobamos que existe el párrafo con la clase ".novisitado"
-		var novisitado = document.querySelectorAll(".novisitado");
-		console.log(novisitado);
-		novisitado = document.body.getElementsByTagName("p");
-		console.log(novisitado);
-		novisitado.onclick = function(){
-			alert("prueba");
-			/*if (novisitado){
-				novisitado.innerHTML += " De cuyo nombre no quiero acordarme." 
-			}*/
+		var novisitado = document.querySelectorAll("p");
+		var click = 0;
+		novisitado[0].onclick = function(){
+			if (click == 0){
+				click++;
+				novisitado[0].innerHTML += " De cuyo nombre no quiero acordarme." 
+				novisitado[0].setAttribute("class", "leido");
+			}else if (click == 1){
+				click++;
+				
+			}
 		};
 	}
 </script>
