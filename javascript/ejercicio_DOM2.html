@@ -41,17 +41,22 @@ frase con:
 		// Comprobamos que existe el párrafo con la clase ".novisitado"
 		var novisitado = document.querySelectorAll("p");
 		var click = 0;
-		novisitado[0].onclick = function(){
+		novisitado[0].onclick = function(event){
+			console.log(event);
 			if (click == 0){
 				click++;
-				novisitado[0].innerHTML += " De cuyo nombre no quiero acordarme." 
+				novisitado[0].innerText += " De cuyo nombre no quiero acordarme." 
 				novisitado[0].setAttribute("class", "leido");
 			}else if (click == 1){
-				click++;
-				
+				// quitamos el parrafo inicial
+				//var parrafo = document.getElementsByTagName("p");
+				novisitado[0].innerText = "En un lugar de la mancha ...";
+				//parrafo[0].parentNode.removeChild(parrafo[0]);
+				novisitado[0].setAttribute("class", "novisitado");
+				click--;				
 			}
 		};
-	}
+	};
 </script>
 <body>
 	
