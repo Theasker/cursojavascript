@@ -6,7 +6,6 @@
 	<title>Ejercicio de ejemplo de formulario</title>
 	<link rel="stylesheet" href="">
 	<style>
-
 		section {width: 400px;margin: 0 auto;}
 		label,input {display: block;}
 		input{margin-bottom: 10px;}
@@ -23,18 +22,23 @@
 			
 			pass.onblur = function(){
 				var controlMayus = false;
+				var controlMinus = false;
 				var controlNum = false;
 				for(x = 0;x<pass.value.length;x++){
 					var mayus = /^[A-Z]$/;
+					var minus = /^[a-z]$/;
 					var num = /^\d$/;
 					if ( mayus.test(pass.value.charAt(x)) ){
 						controlMayus = true;
 					}
-					if ( mayus.test(pass.value.charAt(x)) ){
+					if ( minus.test(pass.value.charAt(x)) ){
+						controlMinus = true;
+					}
+					if ( num.test(pass.value.charAt(x)) ){
 						controlNum = true;
 					}
 				};
-				if (!controlNum || !controlMayus){
+				if (!controlNum || !controlMayus || controlMinus){
 					pass.value = "";
 					document.getElementById("errorpass").setAttribute("class", "errorvisible");
 					pass.focus();
