@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejercicio 1</title>
+<!-- 
+	Sobre la página web Obtener la siguiente información:
+- Numero de enlaces de la pagina
+- Dirección del penúltimo enlace
+- Numero de enlaces del tercer párrafo
+ -->
+ <script>
+ 	window.onload = function(){
+ 		// Nümero de enlaces de la página
+ 		var enlaces = document.querySelectorAll("a");
+ 		console.log("La página tiene " + enlaces.length + " enlaces.");
+ 		// Dirección del penúltimo enlace
+ 		console.log("La dirección del penúltimo enlace es: " + enlaces[enlaces.length - 2].getAttribute("href"));
+ 		// Número de enlaces del tercer párrafo
+ 		var parrafos = document.querySelectorAll('p:nth-child(3) a');
+ 		console.log("El tercer párrafo tiene " + parrafos.length + " enlaces.");
+ 	}
+ </script>
+</head>
+<body>
+	<p>
+		<a href="https://enlace1.html">enlace1</a>
+		<a href="https://enlace2.html">enlace2</a>
+		<a href="https://enlace3.html">enlace3</a>
+		<a href="https://enlace4.html">enlace4</a>
+	</p>
+	<p>
+		<a href="https://enlace5.html">enlace5</a>
+		<a href="https://enlace6.html">enlace6</a>
+		<a href="https://enlace7.html">enlace7</a>
+		<a href="https://enlace8.html">enlace8</a>
+	</p>
+	<p>
+		<a href="https://enlace9.html">enlace9</a>
+		<a href="https://enlace10.html">enlace10</a>
+		<a href="https://enlace11.html">enlace11</a>
+		<a href="https://enlace12.html">enlace12</a>
+	</p>
+	<p>
+		<a href="https://enlace13.html">enlace13</a>
+		<a href="https://enlace14.html">enlace14</a>
+		<a href="https://enlace15.html">enlace15</a>
+		<a href="https://enlace16.html">enlace16</a>
+	</p>
+</body>
+</html>
