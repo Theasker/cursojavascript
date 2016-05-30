@@ -7,7 +7,7 @@
 	<script>
 		$(document).ready(function(){
 			$('input#boton').on('click',function(){
-				$.getJSON('http://jsonplaceholder.typicode.com/comments',function(data){
+				$.getJSON('http://jsonplaceholder.typicode.com/posts',function(data){
 					for(var x = 0;x < data.length;x++){
 						console.log(data[x].postId);
 					}
