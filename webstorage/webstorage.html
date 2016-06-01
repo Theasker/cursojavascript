@@ -19,16 +19,17 @@
 				var c = $('input#clave').val();
 				var v = $('input#valor').val();
 				sessionStorage.setItem(c,v);
+				localStorage.setItem(c,v);
 			})
 			$('input#buscar').on('click',function(){
 				var cbus = $('input#claveBuscar').val();
 				var vbus = sessionStorage.getItem(cbus);
 				$('input#valorBuscar').attr('value',vbus);
 			})
-			$('input#borrar').on('click',function(){
+			$('input#claveBorrar').on('click',function(){
 				var cbor = $('input#claveBorrar').val();
 				sessionStorage.removeItem(cbor);
-				alert('borrado:'+cbor);
+				localStorage.removeItem(cbor);
 			})
 		})
 	</script>
@@ -36,7 +37,7 @@
 <body>
 	<div class="container">
 
-		<form action="" class="form-inline">
+		<form action="" class="form-inline col-md-offset-2">
 			<div class="form-group">
 				<label for="">Introduce Clave</label>
 				<input type="text" class="form-control" id="clave" placeholder="Pon clave">
@@ -45,10 +46,10 @@
 				<label for="">Introduce valor</label>
 				<input type="text" class="form-control" id="valor" placeholder="Pon valor">
 			</div>
-			<input type="text" id="guardar" class="btn btn-info" value="Guardar">
+			<input type="button" id="guardar" class="btn btn-primary" value="Guardar">
 		</form>
 
-		<form action="" class="form-inline">
+		<form action="" class="form-inline col-md-offset-2">
 			<div class="form-group">
 				<label for="">Clave a buscar</label>
 				<input type="text" class="form-control" id="claveBuscar" >
@@ -57,15 +58,15 @@
 				<label for="">Valor encontrado</label>
 				<input type="text" class="form-control" id="valorBuscar" disabled>
 			</div>
-			<input type="text" id="buscar" class="btn btn-success" value="Buscar">
+			<input type="button" id="buscar" class="btn btn-info" value="Buscar">
 		</form>
 
-		<form action="" class="form-inline">
+		<form action="" class="form-inline col-md-offset-2">
 			<div class="form-group">
 				<label for="">Clave a borrar</label>
 				<input type="text" class="form-control" id="claveBorrar">
 			</div>
-			<input type="text" id="borrar" class="btn btn-danger" value="Borrar">
+			<input type="button" id="borrar" class="btn btn-danger" value="Borrar">
 		</form>
 
 	</div>
