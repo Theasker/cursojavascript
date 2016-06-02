@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Websockets</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			
+			var clienteWs = new WebSocket('ws://localhost:8080');
+			//var clienteWs = new WebSocket('ws://echo.websocket.org/');
+
+			clienteWs.onopen = function(){
+				// envio al servidor
+				$('#saludar').on('click',function(){
+					console.log("enviado");
+					var sms = $('#saludo').val();
+					clienteWs.send(sms);
+				});
+				// escuchar lo que envie el servidor en cualquier momento
+				clienteWs.onmessage = function(smsSrv){
+					console.log("recibido");
+					var chat = $('#chat');
+					var chatAntigua = chat.val() + "\n";
+					$('#chat').val(chatAntigua + smsSrv.data);
+				}
+			};
+
+			clienteWs.onclose = function(e){
+				alert("conexion cerrada: " + e.code + " -- " + e.message);
+			}
+		})
+	</script>
+	<div class="container">
+		<div class="row">
+			<div class="form-group col-md-offset-2">
+				<label for="">Salda en el chat</label>
+				<input type="text" id="saludo" class="form-control">
+			</div>
+			<button id="saludar" class="btn btn-success col-md-offset-2">saludar</button>
+		</div>
+		<br>
+		<div class="row">
+			<div class="form-group col-md-offset-3">
+				<label for="">CHAT</label>
+				<textarea name="" id="chat" cols="30" rows="20" disabled></textarea>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
