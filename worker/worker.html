@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Websockets</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			
+			var worker = new Worker('workerworker.js');
+			
+			worker.onerror = function(err){
+				alert("Error al crear el worker "+err.code+" -- "+err.message);
+			}
+			
+			$('#saludar').on('click',function(){
+				var sms = $('#saludo').val();
+				var smsJson = {
+					'cmd': "saludar",
+					'quien': sms
+				}
+
+				worker.postMessage(smsJson);
+			})
+
+			$('#despedir').on('click',function(){
+				var sms = $('#saludo').val();
+				var smsJson = {
+					'cmd': "despedir",
+					'quien': sms
+				}
+
+				worker.postMessage(smsJson);
+			})
+
+			worker.onmessage = function(respuesta){
+				$('#worker').val(respuesta.data);
+			}
+
+		})
+	</script>
+	<div class="container">
+		<div class="form-group">
+			<label for="">Saluda en el worker</label>
+			<input type="text" id="saludo" class="form-control" placeholder="quien eres?">
+		</div>
+		<button type="submit" id="saludar" class="btn btn-default">Saludar</button>
+		<button type="submit" id="despedir" class="btn btn-default">Despedir</button>
+		<div class="form-group">
+			<label for="">Respuesta del Worker</label>
+			<input type="text" id="worker" class="form-control" disabled>
+		</div>
+	</div>
+	
+</body>
+</html>

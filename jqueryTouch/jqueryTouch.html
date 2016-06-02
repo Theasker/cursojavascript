@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jquery Touch</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			// inicializamos coordenadas de referencia;
+			var x = 0;
+			var y = 0;
+
+			// evento lanzado al tocar la pantalla
+			$(document).on('touchstart',function(dedos){
+				// miramos al primer dedo
+				// Almacenamos coordenadas de referencia
+				var dedo = dedos.originalEvent.targetTouches[0];
+				x = dedo.pageX;
+				y = dedo.pageY;
+				// Mostramos las coordenadas de referencia
+				console.log("Empiezo en; ("+x+","+y+")");				
+			})
+
+			$(document).on('touchmove',function(dedos){
+				var dedo = dedos.originalEvent.targetTouches[0];
+				// Coordenadas al movernos
+				var mX = ""; // lo que me he movido en la X
+				var mY = "";
+
+
+				// calculamos hacia donde se mueve
+				if (x<dedo.pageX){
+					mX = "derecha";
+				}else if(x>dedo.pageX){
+					mX = "izquierda";
+				}else{
+					mX = "centro";
+				}
+
+				if (y<dedo.pageY){
+					mY = "arriba";
+				}else if(y>dedo.pageY){
+					mY = "abajo";
+				}else{
+					mY = "centro";
+				}
+
+				console.log("Movido hacia; ("+mX+","+mY+")");				
+			})
+
+		})
+	</script>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<a href="">Toca en cualquier lugar y mira la consola</a>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
